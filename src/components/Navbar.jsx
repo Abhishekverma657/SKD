@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { NAV_LINKS, SITE } from "../data/siteData";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import AuthModal from "./AuthModal";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
@@ -106,6 +108,12 @@ export default function Navbar() {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-4 shrink-0 pr-2">
+              <button
+                onClick={() => setIsAuthModalOpen(true)}
+                className="font-bold text-white/90 hover:text-teal-400 transition-colors uppercase tracking-wider text-sm flex items-center gap-2"
+              >
+                Log In
+              </button>
               <Link
                 to="/contact"
                 className="edcare-btn px-6 py-2.5 text-sm uppercase tracking-wider"
@@ -197,6 +205,12 @@ export default function Navbar() {
           </nav>
 
           <div className="mt-8 space-y-3">
+            <button
+              onClick={() => { setIsOpen(false); setIsAuthModalOpen(true); }}
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white block text-center py-3 rounded-xl text-sm font-semibold transition-colors"
+            >
+              Log In / Register
+            </button>
             <Link
               to="/registration"
               onClick={() => setIsOpen(false)}
@@ -214,6 +228,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </>
   );
 }
