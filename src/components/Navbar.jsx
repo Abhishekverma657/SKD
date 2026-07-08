@@ -110,7 +110,7 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-4 shrink-0 pr-2">
               <button
                 onClick={() => setIsAuthModalOpen(true)}
-                className="font-bold text-white/90 hover:text-teal-400 transition-colors uppercase tracking-wider text-sm flex items-center gap-2"
+                className="edcare-btn px-6 py-2.5 text-sm uppercase tracking-wider"
               >
                 Log In
               </button>

@@ -4,7 +4,7 @@ import { SITE, ADDRESSES } from "../data/siteData";
 import { Reveal, SectionHeader, PageBanner } from "../components/ui";
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "", course: "", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", course: "", city: "", center: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -156,6 +156,42 @@ export default function Contact() {
                         <option>NEET Test Series</option>
                         <option>Other / General Inquiry</option>
                       </select>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-slate-600 text-xs font-bold mb-2 uppercase tracking-wider">City *</label>
+                        <select
+                          name="city"
+                          value={form.city}
+                          onChange={handleChange}
+                          required
+                          className="input-field w-full px-4 py-3.5 rounded-xl text-sm"
+                        >
+                          <option value="">Select City</option>
+                          <option>Prayagraj</option>
+                          <option>Lucknow</option>
+                          <option>Varanasi</option>
+                          <option>Kanpur</option>
+                          <option>Allahabad</option>
+                          <option>Other</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-slate-600 text-xs font-bold mb-2 uppercase tracking-wider">Preferred Center *</label>
+                        <select
+                          name="center"
+                          value={form.center}
+                          onChange={handleChange}
+                          required
+                          className="input-field w-full px-4 py-3.5 rounded-xl text-sm"
+                        >
+                          <option value="">Select Center</option>
+                          <option>SKD NSCI – Main Center (Prayagraj)</option>
+                          <option>SKD NSCI – Lucknow Branch</option>
+                          <option>SKD NSCI – Online / Distance</option>
+                        </select>
+                      </div>
                     </div>
 
                     <div>
